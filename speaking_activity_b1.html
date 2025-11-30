@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Conversation – Speaking (B1)</title>
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',Tahoma,sans-serif;background:linear-gradient(135deg,#667eea,#764ba2);min-height:100vh;padding:20px}
+        .container{max-width:750px;margin:0 auto}
+        .header{text-align:center;color:#fff;margin-bottom:25px;padding:20px}
+        .header h1{font-size:1.8rem;margin-bottom:8px}
+        .header p{opacity:.9}
+        .badge{display:inline-block;background:rgba(255,255,255,.2);padding:6px 18px;border-radius:20px;font-weight:600;margin-top:10px}
+        .card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+        .section{padding:30px;border-bottom:1px solid #e2e8f0}
+        .section:last-child{border-bottom:none}
+        .section-header{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+        .num{width:36px;height:36px;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700}
+        .section-title{font-size:1.2rem;color:#1a202c;font-weight:600}
+        
+        /* VIDEO */
+        .video-wrap{display:flex;justify-content:center}
+        .video-box{width:100%;max-width:350px;border-radius:12px;overflow:hidden;box-shadow:0 8px 25px rgba(0,0,0,.15);background:#000}
+        .video-box iframe{width:100%;height:622px;border:none;display:block}
+        .tip{text-align:center;margin-top:15px;color:#718096;font-size:.9rem}
+        
+        /* GUIDE */
+        .guide-intro{color:#4a5568;line-height:1.7;margin-bottom:20px}
+        .prompts{background:#f7fafc;border-radius:12px;padding:20px}
+        .prompts-title{font-size:.95rem;color:#667eea;font-weight:600;margin-bottom:15px}
+        .prompt{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #e2e8f0;color:#2d3748;line-height:1.5}
+        .prompt:last-child{border-bottom:none}
+        .phrases{margin-top:20px;padding:15px;background:#fefcbf;border-radius:10px}
+        .phrases-title{font-size:.85rem;color:#975a16;font-weight:600;margin-bottom:8px}
+        .phrases p{color:#744210;font-size:.9rem;line-height:1.6;font-style:italic}
+        
+        /* RECORDING */
+        .rec-area{background:linear-gradient(135deg,#ebf8ff,#bee3f8);border-radius:12px;padding:25px;text-align:center}
+        .rec-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 40px;border:none;border-radius:50px;font-size:1.1rem;font-weight:600;cursor:pointer;transition:.3s;margin-bottom:15px;background:linear-gradient(135deg,#48bb78,#38a169);color:#fff}
+        .rec-btn.recording{background:linear-gradient(135deg,#f56565,#c53030);animation:pulse 1.5s infinite}
+        .rec-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.2)}
+        @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(245,101,101,.4)}50%{box-shadow:0 0 0 15px rgba(245,101,101,0)}}
+        .status{font-size:.95rem;color:#4a5568;min-height:24px}
+        .status.active{color:#c53030;font-weight:600}
+        .status.success{color:#38a169;font-weight:600}
+        
+        /* AUDIO & TRANSCRIPTION */
+        .result-box{margin-top:20px;display:none}
+        .result-box.show{display:block;animation:fadeIn .4s}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+        .result-box audio{width:100%;max-width:350px}
+        .label{font-size:.85rem;color:#718096;margin-bottom:10px}
+        .trans-label{font-size:.9rem;color:#667eea;font-weight:600;margin:20px 0 10px;display:flex;align-items:center;gap:8px}
+        .trans-box{background:#fff;border:2px solid #667eea;border-radius:10px;padding:18px;min-height:100px;color:#2d3748;line-height:1.7;font-size:1rem;text-align:left}
+        .trans-box.listening{background:#f0f4ff;border-style:dashed}
+        .trans-box .interim{color:#a0aec0}
+        .trans-tip{margin-top:12px;font-size:.85rem;color:#718096;line-height:1.5;text-align:left}
+        
+        /* COMPLETION */
+        .complete-box{margin-top:25px;padding-top:20px;border-top:1px solid #e2e8f0;display:none}
+        .complete-box.show{display:block;animation:fadeIn .4s}
+        .check-label{display:flex;align-items:center;justify-content:center;gap:12px;padding:15px 20px;background:#f0fff4;border:2px solid #48bb78;border-radius:12px;cursor:pointer}
+        .check-label:hover{background:#c6f6d5}
+        .check-label input{width:22px;height:22px;cursor:pointer}
+        .check-label span{color:#22543d;font-weight:500}
+        .badge-done{margin-top:15px;padding:18px 30px;background:linear-gradient(135deg,#48bb78,#38a169);color:#fff;border-radius:12px;font-size:1.1rem;font-weight:600;display:none}
+        .badge-done.show{display:inline-block;animation:fadeIn .4s}
+        
+        .footer{text-align:center;padding:20px;color:rgba(255,255,255,.7);font-size:.85rem}
+        @media(max-width:600px){.section{padding:20px}.header h1{font-size:1.4rem}.video-box iframe{height:500px}.rec-btn{padding:14px 30px;font-size:1rem}}
+    </style>
+</head>
+<body>
+<div class="container">
+    <header class="header">
+        <h1>🛍️ Shopping Conversation</h1>
+        <p>Speaking Activity</p>
+        <span class="badge">🎤 Speaking • Level B1</span>
+    </header>
+
+    <div class="card">
+        <!-- 1. VIDEO -->
+        <div class="section">
+            <div class="section-header">
+                <span class="num">1</span>
+                <h2 class="section-title">Watch the Video</h2>
+            </div>
+            <div class="video-wrap">
+                <div class="video-box">
+                    <iframe src="https://www.youtube.com/embed/JVQ4Jj_xntQ?rel=0&modestbranding=1" title="Video" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+            <p class="tip">💡 Watch the video at least 2 times before recording</p>
+        </div>
+
+        <!-- 2. GUIDE -->
+        <div class="section">
+            <div class="section-header">
+                <span class="num">2</span>
+                <h2 class="section-title">Prepare Your Response</h2>
+            </div>
+            <p class="guide-intro">After watching the video, record yourself speaking about it. Use the prompts below:</p>
+            <div class="prompts">
+                <p class="prompts-title">Talk about these points:</p>
+                <div class="prompt"><span>📍</span><span><strong>Describe</strong> what happened in the video. What was the situation?</span></div>
+                <div class="prompt"><span>👕</span><span><strong>Explain</strong> what the customer wanted to buy and what they chose.</span></div>
+                <div class="prompt"><span>💭</span><span><strong>Give your opinion:</strong> Was the seller helpful? Why or why not?</span></div>
+                <div class="prompt"><span>🛒</span><span><strong>Share</strong> your preference: Do you like shopping in stores or online? Why?</span></div>
+            </div>
+            <div class="phrases">
+                <p class="phrases-title">💡 Useful phrases:</p>
+                <p>"In the video, I saw..." • "The customer wanted..." • "I think the seller was..." • "I prefer shopping... because..."</p>
+            </div>
+        </div>
+
+        <!-- 3. RECORD -->
+        <div class="section">
+            <div class="section-header">
+                <span class="num">3</span>
+                <h2 class="section-title">Record Your Response</h2>
+            </div>
+            <div class="rec-area">
+                <button class="rec-btn" id="recBtn">🎙️ <span id="recTxt">Start Recording</span></button>
+                <p class="status" id="status">Click the button and speak clearly in English</p>
+                
+                <div class="result-box" id="audioBox">
+                    <p class="label">🔊 Your recording:</p>
+                    <audio id="audioPlayer" controls></audio>
+                </div>
+
+                <div class="result-box" id="transBox">
+                    <p class="trans-label">📝 What you said:</p>
+                    <div class="trans-box" id="transText">Your words will appear here as you speak...</div>
+                    <p class="trans-tip">💡 If the text doesn't match what you said, try speaking slower and clearer!</p>
+                </div>
+
+                <div class="complete-box" id="completeBox">
+                    <label class="check-label">
+                        <input type="checkbox" id="checkDone">
+                        <span>I completed the speaking activity ✓</span>
+                    </label>
+                    <div class="badge-done" id="badgeDone">🎉 Activity Completed!</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">English B1 • Speaking Practice</footer>
+</div>
+
+<script>
+(function(){
+    // Elements
+    const recBtn = document.getElementById('recBtn');
+    const recTxt = document.getElementById('recTxt');
+    const status = document.getElementById('status');
+    const audioBox = document.getElementById('audioBox');
+    const audioPlayer = document.getElementById('audioPlayer');
+    const transBox = document.getElementById('transBox');
+    const transText = document.getElementById('transText');
+    const completeBox = document.getElementById('completeBox');
+    const checkDone = document.getElementById('checkDone');
+    const badgeDone = document.getElementById('badgeDone');
+
+    // State
+    let isRecording = false;
+    let mediaRecorder = null;
+    let audioChunks = [];
+    let stream = null;
+    let recognition = null;
+    let transcript = '';
+
+    // Setup Speech Recognition
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (SpeechRecognition) {
+        recognition = new SpeechRecognition();
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        recognition.lang = 'en-US';
+
+        recognition.onresult = function(e) {
+            let final = '';
+            let interim = '';
+            for (let i = 0; i < e.results.length; i++) {
+                if (e.results[i].isFinal) {
+                    final += e.results[i][0].transcript + ' ';
+                } else {
+                    interim += e.results[i][0].transcript;
+                }
+            }
+            transcript = final;
+            transText.innerHTML = final + '<span class="interim">' + interim + '</span>';
+            if (!final && !interim) {
+                transText.textContent = 'Listening...';
+            }
+        };
+
+        recognition.onend = function() {
+            if (isRecording) {
+                try { recognition.start(); } catch(e) {}
+            }
+        };
+
+        recognition.onerror = function(e) {
+            console.log('Speech error:', e.error);
+        };
+    }
+
+    // Button click
+    recBtn.onclick = async function() {
+        if (!isRecording) {
+            try {
+                // Get mic once
+                if (!stream) {
+                    stream = await navigator.mediaDevices.getUserMedia({audio: true});
+                }
+
+                // Setup recorder
+                audioChunks = [];
+                mediaRecorder = new MediaRecorder(stream);
+                
+                mediaRecorder.ondataavailable = function(e) {
+                    if (e.data.size > 0) audioChunks.push(e.data);
+                };
+
+                mediaRecorder.onstop = function() {
+                    const blob = new Blob(audioChunks, {type: 'audio/webm'});
+                    audioPlayer.src = URL.createObjectURL(blob);
+                    audioBox.classList.add('show');
+                    completeBox.classList.add('show');
+                };
+
+                // Start
+                mediaRecorder.start(200);
+                isRecording = true;
+
+                // Start speech
+                if (recognition) {
+                    transcript = '';
+                    transText.textContent = 'Listening...';
+                    transText.classList.add('listening');
+                    transBox.classList.add('show');
+                    try { recognition.start(); } catch(e) {}
+                }
+
+                // UI
+                recBtn.classList.add('recording');
+                recTxt.textContent = 'Stop Recording';
+                status.textContent = '🔴 Recording... Speak now!';
+                status.className = 'status active';
+
+            } catch(err) {
+                status.textContent = '❌ Allow microphone access and try again';
+                console.error(err);
+            }
+        } else {
+            // Stop
+            isRecording = false;
+            
+            if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+                mediaRecorder.stop();
+            }
+            
+            if (recognition) {
+                try { recognition.stop(); } catch(e) {}
+            }
+
+            transText.classList.remove('listening');
+            if (!transcript.trim()) {
+                transText.textContent = 'No speech detected. Try again and speak louder.';
+            }
+
+            recBtn.classList.remove('recording');
+            recTxt.textContent = 'Record Again';
+            status.textContent = '✅ Recording saved!';
+            status.className = 'status success';
+        }
+    };
+
+    // Checkbox
+    checkDone.onchange = function() {
+        badgeDone.classList.toggle('show', this.checked);
+    };
+})();
+</script>
+</body>
+</html>
