@@ -166,7 +166,7 @@
 
 <script>
 (function(){
-    // IMPORTANTE: Cambia esta URL por la de tu backend cuando lo despliegues
+    // URL del backend en Vercel
     const API_URL = 'https://speaking-api-81bp.vercel.app/api/transcribe';
     
     const recBtn = document.getElementById('recBtn');
@@ -258,12 +258,13 @@
         transText.textContent = 'Sending audio to transcription service...';
 
         try {
-            const formData = new FormData();
-            formData.append('audio', blob, 'recording.webm');
-
+            // Enviar el blob directamente (sin FormData)
             const response = await fetch(API_URL, {
                 method: 'POST',
-                body: formData
+                headers: {
+                    'Content-Type': 'application/octet-stream'
+                },
+                body: blob
             });
 
             if (!response.ok) {
