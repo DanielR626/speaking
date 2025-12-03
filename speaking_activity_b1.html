@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shopping Conversation – Speaking (B1)</title>
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
@@ -19,13 +19,11 @@
         .num{width:36px;height:36px;background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700}
         .section-title{font-size:1.2rem;color:#1a202c;font-weight:600}
         
-        /* VIDEO */
         .video-wrap{display:flex;justify-content:center}
         .video-box{width:100%;max-width:350px;border-radius:12px;overflow:hidden;box-shadow:0 8px 25px rgba(0,0,0,.15);background:#000}
         .video-box iframe{width:100%;height:622px;border:none;display:block}
         .tip{text-align:center;margin-top:15px;color:#718096;font-size:.9rem}
         
-        /* GUIDE */
         .guide-intro{color:#4a5568;line-height:1.7;margin-bottom:20px}
         .prompts{background:#f7fafc;border-radius:12px;padding:20px}
         .prompts-title{font-size:.95rem;color:#667eea;font-weight:600;margin-bottom:15px}
@@ -35,29 +33,27 @@
         .phrases-title{font-size:.85rem;color:#975a16;font-weight:600;margin-bottom:8px}
         .phrases p{color:#744210;font-size:.9rem;line-height:1.6;font-style:italic}
         
-        /* RECORDING */
         .rec-area{background:linear-gradient(135deg,#ebf8ff,#bee3f8);border-radius:12px;padding:25px;text-align:center}
         .rec-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 40px;border:none;border-radius:50px;font-size:1.1rem;font-weight:600;cursor:pointer;transition:.3s;margin-bottom:15px;background:linear-gradient(135deg,#48bb78,#38a169);color:#fff}
         .rec-btn.recording{background:linear-gradient(135deg,#f56565,#c53030);animation:pulse 1.5s infinite}
-        .rec-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.2)}
+        .rec-btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,.2)}
+        .rec-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
         @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(245,101,101,.4)}50%{box-shadow:0 0 0 15px rgba(245,101,101,0)}}
         .status{font-size:.95rem;color:#4a5568;min-height:24px}
         .status.active{color:#c53030;font-weight:600}
         .status.success{color:#38a169;font-weight:600}
+        .status.processing{color:#667eea;font-weight:600}
         
-        /* AUDIO & TRANSCRIPTION */
         .result-box{margin-top:20px;display:none}
         .result-box.show{display:block;animation:fadeIn .4s}
         @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
         .result-box audio{width:100%;max-width:350px}
         .label{font-size:.85rem;color:#718096;margin-bottom:10px}
         .trans-label{font-size:.9rem;color:#667eea;font-weight:600;margin:20px 0 10px;display:flex;align-items:center;gap:8px}
-        .trans-box{background:#fff;border:2px solid #667eea;border-radius:10px;padding:18px;min-height:100px;color:#2d3748;line-height:1.7;font-size:1rem;text-align:left}
-        .trans-box.listening{background:#f0f4ff;border-style:dashed}
-        .trans-box .interim{color:#a0aec0}
+        .trans-box{background:#fff;border:2px solid #667eea;border-radius:10px;padding:18px;min-height:100px;color:#2d3748;line-height:1.7;font-size:1rem;text-align:left;white-space:pre-wrap}
+        .trans-box.processing{background:#f0f4ff;border-style:dashed}
         .trans-tip{margin-top:12px;font-size:.85rem;color:#718096;line-height:1.5;text-align:left}
         
-        /* COMPLETION */
         .complete-box{margin-top:25px;padding-top:20px;border-top:1px solid #e2e8f0;display:none}
         .complete-box.show{display:block;animation:fadeIn .4s}
         .check-label{display:flex;align-items:center;justify-content:center;gap:12px;padding:15px 20px;background:#f0fff4;border:2px solid #48bb78;border-radius:12px;cursor:pointer}
@@ -67,8 +63,17 @@
         .badge-done{margin-top:15px;padding:18px 30px;background:linear-gradient(135deg,#48bb78,#38a169);color:#fff;border-radius:12px;font-size:1.1rem;font-weight:600;display:none}
         .badge-done.show{display:inline-block;animation:fadeIn .4s}
         
+        .spinner{display:inline-block;width:16px;height:16px;border:2px solid #fff;border-top-color:transparent;border-radius:50%;animation:spin 1s linear infinite}
+        @keyframes spin{to{transform:rotate(360deg)}}
+        
         .footer{text-align:center;padding:20px;color:rgba(255,255,255,.7);font-size:.85rem}
-        @media(max-width:600px){.section{padding:20px}.header h1{font-size:1.4rem}.video-box iframe{height:500px}.rec-btn{padding:14px 30px;font-size:1rem}}
+        
+        @media(max-width:600px){
+            .section{padding:20px}
+            .header h1{font-size:1.4rem}
+            .video-box iframe{height:500px}
+            .rec-btn{padding:14px 30px;font-size:1rem}
+        }
     </style>
 </head>
 <body>
@@ -76,11 +81,10 @@
     <header class="header">
         <h1>🛍️ Shopping Conversation</h1>
         <p>Speaking Activity</p>
-        <span class="badge">🎤 Speaking • Level B1</span>
+        <span class="badge">🎤 Speaking • Level B1 • Universal</span>
     </header>
 
     <div class="card">
-        <!-- 1. VIDEO -->
         <div class="section">
             <div class="section-header">
                 <span class="num">1</span>
@@ -88,13 +92,12 @@
             </div>
             <div class="video-wrap">
                 <div class="video-box">
-                    <iframe src="https://www.youtube.com/embed/JVQ4Jj_xntQ?rel=0&modestbranding=1" title="Video" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/V8CvxE9fBXs" title="Shopping Conversation Video" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen></iframe>
                 </div>
             </div>
             <p class="tip">💡 Watch the video at least 2 times before recording</p>
         </div>
 
-        <!-- 2. GUIDE -->
         <div class="section">
             <div class="section-header">
                 <span class="num">2</span>
@@ -103,23 +106,35 @@
             <p class="guide-intro">After watching the video, record yourself speaking about it. Use the prompts below:</p>
             <div class="prompts">
                 <p class="prompts-title">Talk about these points:</p>
-                <div class="prompt"><span>📍</span><span><strong>Describe</strong> what happened in the video. What was the situation?</span></div>
-                <div class="prompt"><span>👕</span><span><strong>Explain</strong> what the customer wanted to buy and what they chose.</span></div>
-                <div class="prompt"><span>💭</span><span><strong>Give your opinion:</strong> Was the seller helpful? Why or why not?</span></div>
-                <div class="prompt"><span>🛒</span><span><strong>Share</strong> your preference: Do you like shopping in stores or online? Why?</span></div>
-            </div>
-            <div class="phrases">
-                <p class="phrases-title">💡 Useful phrases:</p>
-                <p>"In the video, I saw..." • "The customer wanted..." • "I think the seller was..." • "I prefer shopping... because..."</p>
+                <div class="prompt">
+                    <span>📍</span>
+                    <span><strong>Describe</strong> what happened in the video. Who are the characters and where are they?</span>
+                </div>
+                <div class="prompt">
+                    <span>😟</span>
+                    <span><strong>Explain</strong> why the girl looks upset or worried. What do you think happened?</span>
+                </div>
+                <div class="prompt">
+                    <span>💭</span>
+                    <span><strong>Give your opinion:</strong> Why is the boy asking "Why are you running?" What is he trying to understand?</span>
+                </div>
+                <div class="prompt">
+                    <span>🧳</span>
+                    <span><strong>Share</strong> a personal experience: Have you ever felt stressed or rushed while traveling? What happened?</span>
+                </div>
+                <div class="phrases">
+                    <p class="phrases-title">💡 Useful phrases:</p>
+                    <p>"In the video, I saw a girl at the airport..." • "She looked worried because..." • "The boy asked 'Why are you running?' which suggests..." • "If I were her, I would..." • "Once I was late for a flight and..."</p>
+                </div>
             </div>
         </div>
 
-        <!-- 3. RECORD -->
         <div class="section">
             <div class="section-header">
                 <span class="num">3</span>
                 <h2 class="section-title">Record Your Response</h2>
             </div>
+            
             <div class="rec-area">
                 <button class="rec-btn" id="recBtn">🎙️ <span id="recTxt">Start Recording</span></button>
                 <p class="status" id="status">Click the button and speak clearly in English</p>
@@ -131,8 +146,8 @@
 
                 <div class="result-box" id="transBox">
                     <p class="trans-label">📝 What you said:</p>
-                    <div class="trans-box" id="transText">Your words will appear here as you speak...</div>
-                    <p class="trans-tip">💡 If the text doesn't match what you said, try speaking slower and clearer!</p>
+                    <div class="trans-box" id="transText">Your words will appear here after recording...</div>
+                    <p class="trans-tip">✨ Works on all devices: PC, tablet, and mobile!</p>
                 </div>
 
                 <div class="complete-box" id="completeBox">
@@ -146,12 +161,14 @@
         </div>
     </div>
 
-    <footer class="footer">English B1 • Speaking Practice</footer>
+    <footer class="footer">English B1 • Speaking Practice • Powered by AI Transcription</footer>
 </div>
 
 <script>
 (function(){
-    // Elements
+    // IMPORTANTE: Cambia esta URL por la de tu backend cuando lo despliegues
+    const API_URL = 'https://tu-backend.vercel.app/api/transcribe';
+    
     const recBtn = document.getElementById('recBtn');
     const recTxt = document.getElementById('recTxt');
     const status = document.getElementById('status');
@@ -163,122 +180,121 @@
     const checkDone = document.getElementById('checkDone');
     const badgeDone = document.getElementById('badgeDone');
 
-    // State
     let isRecording = false;
     let mediaRecorder = null;
     let audioChunks = [];
     let stream = null;
-    let recognition = null;
-    let transcript = '';
 
-    // Setup Speech Recognition
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    if (SpeechRecognition) {
-        recognition = new SpeechRecognition();
-        recognition.continuous = true;
-        recognition.interimResults = true;
-        recognition.lang = 'en-US';
-
-        recognition.onresult = function(e) {
-            let final = '';
-            let interim = '';
-            for (let i = 0; i < e.results.length; i++) {
-                if (e.results[i].isFinal) {
-                    final += e.results[i][0].transcript + ' ';
-                } else {
-                    interim += e.results[i][0].transcript;
-                }
-            }
-            transcript = final;
-            transText.innerHTML = final + '<span class="interim">' + interim + '</span>';
-            if (!final && !interim) {
-                transText.textContent = 'Listening...';
-            }
-        };
-
-        recognition.onend = function() {
-            if (isRecording) {
-                try { recognition.start(); } catch(e) {}
-            }
-        };
-
-        recognition.onerror = function(e) {
-            console.log('Speech error:', e.error);
-        };
-    }
-
-    // Button click
     recBtn.onclick = async function() {
         if (!isRecording) {
             try {
-                // Get mic once
                 if (!stream) {
                     stream = await navigator.mediaDevices.getUserMedia({audio: true});
                 }
 
-                // Setup recorder
                 audioChunks = [];
-                mediaRecorder = new MediaRecorder(stream);
+                
+                let mimeType = '';
+                if (MediaRecorder.isTypeSupported('audio/mp4')) {
+                    mimeType = 'audio/mp4';
+                } else if (MediaRecorder.isTypeSupported('audio/webm;codecs=opus')) {
+                    mimeType = 'audio/webm;codecs=opus';
+                } else if (MediaRecorder.isTypeSupported('audio/webm')) {
+                    mimeType = 'audio/webm';
+                }
+
+                mediaRecorder = mimeType ? 
+                    new MediaRecorder(stream, { mimeType }) : 
+                    new MediaRecorder(stream);
                 
                 mediaRecorder.ondataavailable = function(e) {
                     if (e.data.size > 0) audioChunks.push(e.data);
                 };
 
-                mediaRecorder.onstop = function() {
-                    const blob = new Blob(audioChunks, {type: 'audio/webm'});
-                    audioPlayer.src = URL.createObjectURL(blob);
+                mediaRecorder.onstop = async function() {
+                    const blob = new Blob(audioChunks, {type: mimeType || 'audio/webm'});
+                    const url = URL.createObjectURL(blob);
+                    audioPlayer.src = url;
                     audioBox.classList.add('show');
-                    completeBox.classList.add('show');
+                    
+                    await transcribeAudio(blob);
                 };
 
-                // Start
                 mediaRecorder.start(200);
                 isRecording = true;
 
-                // Start speech
-                if (recognition) {
-                    transcript = '';
-                    transText.textContent = 'Listening...';
-                    transText.classList.add('listening');
-                    transBox.classList.add('show');
-                    try { recognition.start(); } catch(e) {}
-                }
-
-                // UI
                 recBtn.classList.add('recording');
                 recTxt.textContent = 'Stop Recording';
                 status.textContent = '🔴 Recording... Speak now!';
                 status.className = 'status active';
 
             } catch(err) {
-                status.textContent = '❌ Allow microphone access and try again';
-                console.error(err);
+                console.error('Mic error:', err);
+                if (err.name === 'NotAllowedError') {
+                    status.textContent = '❌ Please allow microphone access';
+                } else if (err.name === 'NotFoundError') {
+                    status.textContent = '❌ No microphone found';
+                } else {
+                    status.textContent = '❌ Could not start recording';
+                }
             }
         } else {
-            // Stop
             isRecording = false;
-            
             if (mediaRecorder && mediaRecorder.state !== 'inactive') {
                 mediaRecorder.stop();
             }
-            
-            if (recognition) {
-                try { recognition.stop(); } catch(e) {}
-            }
-
-            transText.classList.remove('listening');
-            if (!transcript.trim()) {
-                transText.textContent = 'No speech detected. Try again and speak louder.';
-            }
 
             recBtn.classList.remove('recording');
-            recTxt.textContent = 'Record Again';
-            status.textContent = '✅ Recording saved!';
-            status.className = 'status success';
+            recBtn.disabled = true;
+            recTxt.innerHTML = '<span class="spinner"></span> Processing...';
+            status.textContent = '⏳ Transcribing your audio...';
+            status.className = 'status processing';
         }
     };
 
-    // Checkbox
+    async function transcribeAudio(blob) {
+        transBox.classList.add('show');
+        transText.classList.add('processing');
+        transText.textContent = 'Sending audio to transcription service...';
+
+        try {
+            const formData = new FormData();
+            formData.append('audio', blob, 'recording.webm');
+
+            const response = await fetch(API_URL, {
+                method: 'POST',
+                body: formData
+            });
+
+            if (!response.ok) {
+                throw new Error(`Server error: ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            transText.classList.remove('processing');
+
+            if (data.success && data.text) {
+                transText.textContent = data.text;
+                status.textContent = '✅ Transcription complete!';
+                status.className = 'status success';
+                completeBox.classList.add('show');
+            } else {
+                throw new Error(data.error || 'Transcription failed');
+            }
+
+        } catch(err) {
+            console.error('Transcription error:', err);
+            transText.classList.remove('processing');
+            transText.textContent = '⚠️ Could not transcribe audio. Please try again or check your internet connection.';
+            status.textContent = '❌ Transcription failed';
+            status.className = 'status';
+        } finally {
+            recBtn.disabled = false;
+            recTxt.textContent = 'Record Again';
+        }
+    }
+
     checkDone.onchange = function() {
         badgeDone.classList.toggle('show', this.checked);
     };
