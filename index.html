@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shopping Conversation – Speaking (B1)</title>
+    <title>At the Airport Conversation – Speaking (B1)</title>
     <style>
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Segoe UI',Tahoma,sans-serif;background:linear-gradient(135deg,#667eea,#764ba2);min-height:100vh;padding:20px}
@@ -24,14 +24,12 @@
         .video-box iframe{width:100%;height:622px;border:none;display:block}
         .tip{text-align:center;margin-top:15px;color:#718096;font-size:.9rem}
         
-        .guide-intro{color:#4a5568;line-height:1.7;margin-bottom:20px}
+        .guide-intro{color:#4a5568;line-height:1.7;margin-bottom:20px;font-weight:600;font-size:1.05rem}
         .prompts{background:#f7fafc;border-radius:12px;padding:20px}
-        .prompts-title{font-size:.95rem;color:#667eea;font-weight:600;margin-bottom:15px}
-        .prompt{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #e2e8f0;color:#2d3748;line-height:1.5}
-        .prompt:last-child{border-bottom:none}
-        .phrases{margin-top:20px;padding:15px;background:#fefcbf;border-radius:10px}
-        .phrases-title{font-size:.85rem;color:#975a16;font-weight:600;margin-bottom:8px}
-        .phrases p{color:#744210;font-size:.9rem;line-height:1.6;font-style:italic}
+        .question{display:flex;gap:12px;padding:14px 0;border-bottom:1px solid #e2e8f0;color:#2d3748;line-height:1.6;font-size:1rem}
+        .question:last-child{border-bottom:none}
+        .question-num{color:#667eea;font-weight:700;min-width:25px}
+        .question-text{flex:1}
         
         .rec-area{background:linear-gradient(135deg,#ebf8ff,#bee3f8);border-radius:12px;padding:25px;text-align:center}
         .rec-btn{display:inline-flex;align-items:center;gap:10px;padding:16px 40px;border:none;border-radius:50px;font-size:1.1rem;font-weight:600;cursor:pointer;transition:.3s;margin-bottom:15px;background:linear-gradient(135deg,#48bb78,#38a169);color:#fff}
@@ -79,7 +77,7 @@
 <body>
 <div class="container">
     <header class="header">
-        <h1>🛍️ Shopping Conversation</h1>
+        <h1>✈️ At the Airport Conversation</h1>
         <p>Speaking Activity</p>
         <span class="badge">🎤 Speaking • Level B1 • Universal</span>
     </header>
@@ -92,7 +90,7 @@
             </div>
             <div class="video-wrap">
                 <div class="video-box">
-                    <iframe src="https://www.youtube.com/embed/V8CvxE9fBXs" title="Shopping Conversation Video" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen></iframe>
+                    <iframe src="https://www.youtube.com/embed/V8CvxE9fBXs" title="At the Airport Conversation Video" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen></iframe>
                 </div>
             </div>
             <p class="tip">💡 Watch the video at least 2 times before recording</p>
@@ -103,28 +101,27 @@
                 <span class="num">2</span>
                 <h2 class="section-title">Prepare Your Response</h2>
             </div>
-            <p class="guide-intro">After watching the video, record yourself speaking about it. Use the prompts below:</p>
+            <p class="guide-intro">Answer the following questions aloud:</p>
             <div class="prompts">
-                <p class="prompts-title">Talk about these points:</p>
-                <div class="prompt">
-                    <span>📍</span>
-                    <span><strong>Describe</strong> what happened in the video. Who are the characters and where are they?</span>
+                <div class="question">
+                    <span class="question-num">1.</span>
+                    <span class="question-text">Why is the girl worried?</span>
                 </div>
-                <div class="prompt">
-                    <span>😟</span>
-                    <span><strong>Explain</strong> why the girl looks upset or worried. What do you think happened?</span>
+                <div class="question">
+                    <span class="question-num">2.</span>
+                    <span class="question-text">Where did she lose the passport?</span>
                 </div>
-                <div class="prompt">
-                    <span>💭</span>
-                    <span><strong>Give your opinion:</strong> Why is the boy asking "Why are you running?" What is he trying to understand?</span>
+                <div class="question">
+                    <span class="question-num">3.</span>
+                    <span class="question-text">What does the boy suggest to her?</span>
                 </div>
-                <div class="prompt">
-                    <span>🧳</span>
-                    <span><strong>Share</strong> a personal experience: Have you ever felt stressed or rushed while traveling? What happened?</span>
+                <div class="question">
+                    <span class="question-num">4.</span>
+                    <span class="question-text">Where are they at that moment?</span>
                 </div>
-                <div class="phrases">
-                    <p class="phrases-title">💡 Useful phrases:</p>
-                    <p>"In the video, I saw a girl at the airport..." • "She looked worried because..." • "The boy asked 'Why are you running?' which suggests..." • "If I were her, I would..." • "Once I was late for a flight and..."</p>
+                <div class="question">
+                    <span class="question-num">5.</span>
+                    <span class="question-text">Have you had a similar experience? Tell us about it.</span>
                 </div>
             </div>
         </div>
@@ -258,7 +255,6 @@
         transText.textContent = 'Sending audio to transcription service...';
 
         try {
-            // Enviar el blob directamente (sin FormData)
             const response = await fetch(API_URL, {
                 method: 'POST',
                 headers: {
