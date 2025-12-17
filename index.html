@@ -470,10 +470,11 @@
             min-height:90px;
             color:#2d3748;
             line-height:1.8;
-            font-size:1rem;
+            font-size:1.05rem;
             white-space:pre-wrap;
             box-shadow:0 5px 15px rgba(102,126,234,0.2);
             transition:all 0.3s ease;
+            margin-bottom:20px;
         }
         .trans-box:hover{
             box-shadow:0 8px 25px rgba(102,126,234,0.3);
@@ -642,22 +643,6 @@
             animation:fadeIn 0.8s ease 1.5s backwards;
         }
         
-        /* Confeti */
-        .confetti{
-            position:fixed;
-            width:10px;
-            height:10px;
-            background:#f093fb;
-            position:absolute;
-            animation:confetti-fall 3s ease-out forwards;
-        }
-        @keyframes confetti-fall{
-            to{
-                transform:translateY(100vh) rotate(360deg);
-                opacity:0;
-            }
-        }
-        
         @keyframes fadeIn{
             from{opacity:0}
             to{opacity:1}
@@ -717,7 +702,7 @@
                 <span class="num">2</span>
                 <h2 class="section-title">Answer Each Question Correctly</h2>
             </div>
-            <p class="guide-intro">📢 Record your answer for each question. You must answer correctly to continue!</p>
+            <p class="guide-intro">📢 Record your answer for each question based on the video. You must answer correctly to continue!</p>
             
             <!-- Pregunta 1 -->
             <div class="question-item active" data-question="1">
@@ -734,7 +719,7 @@
                     
                     <div class="result-box" data-result="1">
                         <audio controls data-audio="1"></audio>
-                        <p class="trans-label">📝 Your answer:</p>
+                        <p class="trans-label">📝 What you said:</p>
                         <div class="trans-box" data-trans="1">Your transcription will appear here...</div>
                         
                         <div class="validation-box" data-validation="1">
@@ -763,7 +748,7 @@
                     
                     <div class="result-box" data-result="2">
                         <audio controls data-audio="2"></audio>
-                        <p class="trans-label">📝 Your answer:</p>
+                        <p class="trans-label">📝 What you said:</p>
                         <div class="trans-box" data-trans="2">Your transcription will appear here...</div>
                         
                         <div class="validation-box" data-validation="2">
@@ -792,7 +777,7 @@
                     
                     <div class="result-box" data-result="3">
                         <audio controls data-audio="3"></audio>
-                        <p class="trans-label">📝 Your answer:</p>
+                        <p class="trans-label">📝 What you said:</p>
                         <div class="trans-box" data-trans="3">Your transcription will appear here...</div>
                         
                         <div class="validation-box" data-validation="3">
@@ -821,7 +806,7 @@
                     
                     <div class="result-box" data-result="4">
                         <audio controls data-audio="4"></audio>
-                        <p class="trans-label">📝 Your answer:</p>
+                        <p class="trans-label">📝 What you said:</p>
                         <div class="trans-box" data-trans="4">Your transcription will appear here...</div>
                         
                         <div class="validation-box" data-validation="4">
@@ -850,7 +835,7 @@
                     
                     <div class="result-box" data-result="5">
                         <audio controls data-audio="5"></audio>
-                        <p class="trans-label">📝 Your answer:</p>
+                        <p class="trans-label">📝 What you said:</p>
                         <div class="trans-box" data-trans="5">Your transcription will appear here...</div>
                         
                         <div class="validation-box" data-validation="5">
@@ -899,41 +884,27 @@
     }
     createParticles();
     
-    // Confeti
-    function createConfetti() {
-        const colors = ['#667eea', '#764ba2', '#f093fb', '#48bb78', '#f56565'];
-        for(let i = 0; i < 50; i++) {
-            const confetti = document.createElement('div');
-            confetti.className = 'confetti';
-            confetti.style.left = Math.random() * 100 + '%';
-            confetti.style.top = '-10px';
-            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
-            confetti.style.animationDelay = Math.random() * 0.5 + 's';
-            document.body.appendChild(confetti);
-            setTimeout(() => confetti.remove(), 3000);
-        }
-    }
-    
+    // Respuestas esperadas SEGÚN EL VIDEO
     const expectedAnswers = {
         1: {
-            keywords: ['lost', 'passport', 'worried', 'cant', 'find', 'missing'],
-            hint: '💡 Hint: The girl is worried because she lost something important for traveling...'
+            keywords: ['lost', 'passport', 'cant', 'find', 'missing', 'lose'],
+            hint: '💡 According to the video: The girl is worried because she can\'t find her passport. She lost it somewhere.'
         },
         2: {
-            keywords: ['taxi', 'cab', 'car', 'vehicle', 'ride'],
-            hint: '💡 Hint: Think about where she was before arriving at the airport...'
+            keywords: ['taxi', 'cab', 'car'],
+            hint: '💡 According to the video: She thinks she left her passport in the taxi on the way to the airport.'
         },
         3: {
-            keywords: ['information', 'desk', 'counter', 'ask', 'help', 'staff', 'lost', 'found'],
-            hint: '💡 Hint: The boy suggests going to a place where they can help with lost items...'
+            keywords: ['information', 'desk', 'counter', 'go', 'ask'],
+            hint: '💡 According to the video: The boy suggests going to the information desk to ask for help finding the passport.'
         },
         4: {
-            keywords: ['airport', 'terminal', 'departure', 'check-in'],
-            hint: '💡 Hint: Look at the title of the video! Where are conversations at airports happening?'
+            keywords: ['airport'],
+            hint: '💡 According to the video: They are at the airport. Look at the video title!'
         },
         5: {
-            keywords: [],
-            hint: '💡 Share a personal experience about losing something or traveling. Speak for at least 20 seconds.',
+            keywords: [], // Pregunta abierta
+            hint: '💡 This is a personal question. Share your own experience about losing something important while traveling. Speak for at least 15-20 seconds.',
             minWords: 15
         }
     };
@@ -1068,10 +1039,15 @@
             transBox.classList.remove('processing');
 
             if (data.success && data.text) {
+                // ✅ SIEMPRE MOSTRAR LA TRANSCRIPCIÓN
                 transBox.textContent = data.text;
+                transBox.style.fontWeight = '600';
+                transBox.style.fontSize = '1.1rem';
+                
                 status.textContent = '✅ Transcription complete!';
                 status.className = 'status success';
                 
+                // Validar la respuesta
                 validateAnswer(questionNum, data.text);
                 
             } else {
@@ -1107,9 +1083,11 @@
         let isCorrect = false;
 
         if (questionNum === 5) {
+            // Pregunta 5 es abierta
             const wordCount = transcription.trim().split(/\s+/).length;
             isCorrect = wordCount >= (expected.minWords || 15);
         } else {
+            // Validar con palabras clave del video
             const foundKeywords = expected.keywords.filter(keyword => 
                 textLower.includes(keyword.toLowerCase())
             );
@@ -1119,29 +1097,31 @@
         validationBox.classList.add('show');
 
         if (isCorrect) {
+            // ✅ Respuesta CORRECTA
             validationBox.classList.remove('incorrect');
             validationBox.classList.add('correct');
             validationIcon.textContent = '✅';
             validationText.textContent = 'Correct! Well done!';
-            validationHint.textContent = 'Your answer is correct. You can continue to the next question.';
+            validationHint.textContent = 'Your answer matches the video content. You can continue!';
             nextBtn.style.display = 'inline-block';
             retryBtn.style.display = 'none';
             
             questionItem.classList.remove('incorrect', 'active');
             questionItem.classList.add('completed');
             statusIcon.textContent = '✅';
-            status.textContent = '✅ Answer validated - Correct!';
+            status.textContent = '✅ Correct answer!';
             status.className = 'status success';
             
             completedQuestions++;
             updateProgress();
 
         } else {
+            // ❌ Respuesta INCORRECTA
             validationBox.classList.remove('correct');
             validationBox.classList.add('incorrect');
             validationIcon.textContent = '❌';
             validationText.textContent = 'Incorrect answer';
-            validationHint.innerHTML = `${expected.hint}<br><br>Please record your answer again.`;
+            validationHint.innerHTML = `${expected.hint}<br><br>Please watch the video again and record your answer.`;
             nextBtn.style.display = 'none';
             retryBtn.style.display = 'inline-block';
             
@@ -1154,17 +1134,14 @@
     }
 
     function resetQuestion(questionNum) {
-        const resultBox = document.querySelector(`[data-result="${questionNum}"]`);
         const validationBox = document.querySelector(`[data-validation="${questionNum}"]`);
-        const transBox = document.querySelector(`[data-trans="${questionNum}"]`);
         const questionItem = document.querySelector(`[data-question="${questionNum}"]`);
         const status = document.querySelector(`[data-status="${questionNum}"]`);
         const btn = document.querySelector(`[data-btn="${questionNum}"]`);
         const recText = btn.querySelector('.rec-text');
 
-        resultBox.classList.remove('show');
+        // Ocultar solo la validación, NO la transcripción
         validationBox.classList.remove('show', 'correct', 'incorrect');
-        transBox.textContent = 'Your transcription will appear here...';
         questionItem.classList.remove('incorrect', 'completed');
         
         status.textContent = 'Ready to record again';
@@ -1188,7 +1165,7 @@
             
             nextItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } else {
-            createConfetti();
+            // Completado
             document.getElementById('completeBox').classList.add('show');
             document.getElementById('completeBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
@@ -1196,7 +1173,6 @@
 
     document.getElementById('checkDone').onchange = function() {
         document.getElementById('badgeDone').classList.toggle('show', this.checked);
-        if(this.checked) createConfetti();
     };
 })();
 </script>
