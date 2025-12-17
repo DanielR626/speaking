@@ -1,1180 +1,657 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>At the Airport Conversation – Speaking (B1)</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>At the Airport - Speaking Exercise B1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
-        
-        *{margin:0;padding:0;box-sizing:border-box}
-        
-        body{
-            font-family:'Poppins',sans-serif;
-            background:#0f0c29;
-            background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
-            min-height:100vh;
-            padding:20px;
-            position:relative;
-            overflow-x:hidden;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
-        /* Partículas de fondo animadas */
-        .particles{
-            position:fixed;
-            top:0;
-            left:0;
-            width:100%;
-            height:100%;
-            pointer-events:none;
-            z-index:0;
-        }
-        .particle{
-            position:absolute;
-            background:rgba(255,255,255,0.1);
-            border-radius:50%;
-            animation:float 15s infinite;
-        }
-        @keyframes float{
-            0%,100%{transform:translateY(0) rotate(0deg);opacity:0.3}
-            50%{transform:translateY(-100px) rotate(180deg);opacity:0.8}
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
         }
         
-        .container{
-            max-width:800px;
-            margin:0 auto;
-            position:relative;
-            z-index:1;
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
         
-        /* Header mejorado */
-        .header{
-            text-align:center;
-            color:#fff;
-            margin-bottom:30px;
-            padding:30px;
-            animation:fadeInDown 0.8s ease;
-        }
-        .header h1{
-            font-size:2.5rem;
-            margin-bottom:10px;
-            font-weight:800;
-            background:linear-gradient(135deg,#667eea,#764ba2,#f093fb);
-            -webkit-background-clip:text;
-            -webkit-text-fill-color:transparent;
-            background-clip:text;
-            text-shadow:0 0 30px rgba(102,126,234,0.5);
-            animation:glow 2s ease-in-out infinite alternate;
-        }
-        @keyframes glow{
-            from{filter:drop-shadow(0 0 10px rgba(102,126,234,0.5))}
-            to{filter:drop-shadow(0 0 20px rgba(118,75,162,0.8))}
-        }
-        .header p{opacity:.9;font-size:1.1rem;margin-bottom:15px}
-        .badge{
-            display:inline-block;
-            background:linear-gradient(135deg,rgba(102,126,234,0.3),rgba(118,75,162,0.3));
-            padding:10px 25px;
-            border-radius:30px;
-            font-weight:600;
-            margin-top:10px;
-            border:2px solid rgba(255,255,255,0.2);
-            backdrop-filter:blur(10px);
-            animation:pulse-badge 2s infinite;
-        }
-        @keyframes pulse-badge{
-            0%,100%{transform:scale(1)}
-            50%{transform:scale(1.05)}
+        h1 {
+            text-align: center;
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
         }
         
-        /* Barra de progreso */
-        .progress-container{
-            background:rgba(255,255,255,0.1);
-            border-radius:20px;
-            padding:20px;
-            margin-bottom:25px;
-            backdrop-filter:blur(10px);
-            border:1px solid rgba(255,255,255,0.2);
-            animation:fadeIn 0.8s ease 0.3s backwards;
-        }
-        .progress-header{
-            display:flex;
-            justify-content:space-between;
-            align-items:center;
-            margin-bottom:15px;
-            color:#fff;
-        }
-        .progress-title{
-            font-weight:600;
-            font-size:1.1rem;
-        }
-        .progress-count{
-            font-size:1.3rem;
-            font-weight:700;
-            background:linear-gradient(135deg,#48bb78,#38a169);
-            padding:5px 15px;
-            border-radius:20px;
-            animation:bounce 1s infinite;
-        }
-        @keyframes bounce{
-            0%,100%{transform:translateY(0)}
-            50%{transform:translateY(-5px)}
-        }
-        .progress-bar-bg{
-            background:rgba(255,255,255,0.1);
-            border-radius:15px;
-            height:20px;
-            overflow:hidden;
-            position:relative;
-        }
-        .progress-bar{
-            height:100%;
-            background:linear-gradient(90deg,#667eea,#764ba2,#f093fb);
-            border-radius:15px;
-            transition:width 0.8s cubic-bezier(0.68,-0.55,0.265,1.55);
-            position:relative;
-            overflow:hidden;
-        }
-        .progress-bar::before{
-            content:'';
-            position:absolute;
-            top:0;
-            left:-100%;
-            width:100%;
-            height:100%;
-            background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);
-            animation:shimmer 2s infinite;
-        }
-        @keyframes shimmer{
-            to{left:100%}
+        .subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
         }
         
-        .card{
-            background:rgba(255,255,255,0.95);
-            border-radius:30px;
-            overflow:hidden;
-            box-shadow:0 30px 80px rgba(0,0,0,.4),0 0 0 1px rgba(255,255,255,.1);
-            animation:fadeInUp 0.8s ease 0.5s backwards;
-            backdrop-filter:blur(20px);
+        .progress {
+            background: #e0e0e0;
+            border-radius: 10px;
+            height: 30px;
+            margin-bottom: 30px;
+            overflow: hidden;
         }
         
-        .section{
-            padding:35px;
-            border-bottom:1px solid rgba(226,232,240,0.5);
-            animation:fadeIn 0.6s ease;
-        }
-        .section:last-child{border-bottom:none}
-        
-        .section-header{
-            display:flex;
-            align-items:center;
-            gap:15px;
-            margin-bottom:25px;
-        }
-        .num{
-            width:45px;
-            height:45px;
-            background:linear-gradient(135deg,#667eea,#764ba2);
-            color:#fff;
-            border-radius:50%;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-weight:800;
-            font-size:1.3rem;
-            box-shadow:0 5px 15px rgba(102,126,234,0.4);
-            animation:rotate-in 0.6s ease;
-        }
-        @keyframes rotate-in{
-            from{transform:rotate(-180deg) scale(0);opacity:0}
-            to{transform:rotate(0) scale(1);opacity:1}
-        }
-        .section-title{
-            font-size:1.4rem;
-            color:#1a202c;
-            font-weight:700;
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
         }
         
-        .video-wrap{
-            display:flex;
-            justify-content:center;
-            animation:zoomIn 0.8s ease;
-        }
-        @keyframes zoomIn{
-            from{transform:scale(0.8);opacity:0}
-            to{transform:scale(1);opacity:1}
-        }
-        .video-box{
-            width:100%;
-            max-width:400px;
-            border-radius:20px;
-            overflow:hidden;
-            box-shadow:0 15px 40px rgba(0,0,0,.25);
-            background:#000;
-            transition:transform 0.3s ease,box-shadow 0.3s ease;
-        }
-        .video-box:hover{
-            transform:translateY(-5px) scale(1.02);
-            box-shadow:0 20px 60px rgba(0,0,0,.35);
-        }
-        .video-box iframe{
-            width:100%;
-            height:640px;
-            border:none;
-            display:block;
-        }
-        .tip{
-            text-align:center;
-            margin-top:20px;
-            color:#718096;
-            font-size:1rem;
-            animation:fadeIn 0.8s ease 1s backwards;
+        .video-container {
+            margin: 30px 0;
+            border-radius: 15px;
+            overflow: hidden;
         }
         
-        .guide-intro{
-            color:#4a5568;
-            line-height:1.8;
-            margin-bottom:25px;
-            font-weight:600;
-            font-size:1.1rem;
-            animation:slideInLeft 0.6s ease;
-        }
-        @keyframes slideInLeft{
-            from{transform:translateX(-30px);opacity:0}
-            to{transform:translateX(0);opacity:1}
+        .video-container iframe {
+            width: 100%;
+            height: 450px;
         }
         
-        /* Preguntas mejoradas */
-        .question-item{
-            background:linear-gradient(135deg,#f7fafc,#edf2f7);
-            border-radius:20px;
-            padding:25px;
-            margin-bottom:25px;
-            border:3px solid #e2e8f0;
-            transition:all 0.4s cubic-bezier(0.68,-0.55,0.265,1.55);
-            position:relative;
-            overflow:hidden;
-        }
-        .question-item::before{
-            content:'';
-            position:absolute;
-            top:0;
-            left:-100%;
-            width:100%;
-            height:100%;
-            background:linear-gradient(90deg,transparent,rgba(102,126,234,0.1),transparent);
-            transition:left 0.6s ease;
-        }
-        .question-item:hover::before{
-            left:100%;
-        }
-        .question-item.active{
-            border-color:#667eea;
-            background:linear-gradient(135deg,#f0f4ff,#e6f0ff);
-            transform:scale(1.02);
-            box-shadow:0 10px 30px rgba(102,126,234,0.3);
-        }
-        .question-item.completed{
-            border-color:#48bb78;
-            background:linear-gradient(135deg,#f0fff4,#e6ffed);
-            animation:success-pulse 0.6s ease;
-        }
-        @keyframes success-pulse{
-            0%,100%{transform:scale(1)}
-            50%{transform:scale(1.05)}
-        }
-        .question-item.incorrect{
-            border-color:#f56565;
-            background:linear-gradient(135deg,#fff5f5,#fed7d7);
-            animation:shake 0.5s ease;
-        }
-        @keyframes shake{
-            0%,100%{transform:translateX(0)}
-            25%{transform:translateX(-10px)}
-            75%{transform:translateX(10px)}
-        }
-        .question-item.locked{
-            opacity:0.4;
-            pointer-events:none;
-            filter:grayscale(1);
+        .question {
+            background: #f7f9fc;
+            border: 3px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
         }
         
-        .question-header{
-            display:flex;
-            align-items:center;
-            gap:15px;
-            margin-bottom:20px;
-        }
-        .question-num{
-            width:40px;
-            height:40px;
-            background:linear-gradient(135deg,#667eea,#764ba2);
-            color:#fff;
-            border-radius:50%;
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            font-weight:800;
-            font-size:1.2rem;
-            box-shadow:0 5px 15px rgba(102,126,234,0.4);
-            transition:all 0.3s ease;
-        }
-        .question-item.completed .question-num{
-            background:linear-gradient(135deg,#48bb78,#38a169);
-            animation:spin-success 0.6s ease;
-        }
-        @keyframes spin-success{
-            from{transform:rotate(0deg)}
-            to{transform:rotate(360deg)}
-        }
-        .question-item.incorrect .question-num{
-            background:linear-gradient(135deg,#f56565,#c53030);
-        }
-        .question-text{
-            flex:1;
-            color:#2d3748;
-            font-size:1.1rem;
-            font-weight:600;
-        }
-        .status-icon{
-            font-size:1.5rem;
-            animation:bounce-icon 1s infinite;
-        }
-        @keyframes bounce-icon{
-            0%,100%{transform:scale(1)}
-            50%{transform:scale(1.2)}
+        .question.active {
+            border-color: #667eea;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
         }
         
-        .rec-area{
-            margin-top:20px;
-            display:none;
-            animation:slideDown 0.4s ease;
-        }
-        @keyframes slideDown{
-            from{opacity:0;transform:translateY(-20px)}
-            to{opacity:1;transform:translateY(0)}
-        }
-        .question-item.active .rec-area{
-            display:block;
+        .question.completed {
+            border-color: #4caf50;
+            background: #f0f8f0;
         }
         
-        .rec-btn{
-            display:inline-flex;
-            align-items:center;
-            gap:12px;
-            padding:16px 40px;
-            border:none;
-            border-radius:50px;
-            font-size:1.1rem;
-            font-weight:700;
-            cursor:pointer;
-            transition:all 0.3s cubic-bezier(0.68,-0.55,0.265,1.55);
-            margin-bottom:15px;
-            background:linear-gradient(135deg,#48bb78,#38a169);
-            color:#fff;
-            box-shadow:0 5px 20px rgba(72,187,120,0.4);
-            position:relative;
-            overflow:hidden;
-        }
-        .rec-btn::before{
-            content:'';
-            position:absolute;
-            top:50%;
-            left:50%;
-            width:0;
-            height:0;
-            border-radius:50%;
-            background:rgba(255,255,255,0.3);
-            transform:translate(-50%,-50%);
-            transition:width 0.6s,height 0.6s;
-        }
-        .rec-btn:hover::before{
-            width:300px;
-            height:300px;
-        }
-        .rec-btn.recording{
-            background:linear-gradient(135deg,#f56565,#c53030);
-            animation:pulse-record 1s infinite;
-            box-shadow:0 5px 20px rgba(245,101,101,0.6);
-        }
-        @keyframes pulse-record{
-            0%,100%{transform:scale(1);box-shadow:0 5px 20px rgba(245,101,101,0.6)}
-            50%{transform:scale(1.05);box-shadow:0 8px 30px rgba(245,101,101,0.8)}
-        }
-        .rec-btn:hover:not(:disabled){
-            transform:translateY(-3px) scale(1.05);
-            box-shadow:0 10px 30px rgba(72,187,120,0.6);
-        }
-        .rec-btn:active:not(:disabled){
-            transform:translateY(-1px) scale(1.02);
-        }
-        .rec-btn:disabled{
-            opacity:.6;
-            cursor:not-allowed;
-            transform:none;
+        .question.locked {
+            opacity: 0.5;
+            pointer-events: none;
         }
         
-        .status{
-            font-size:1rem;
-            color:#4a5568;
-            min-height:24px;
-            margin-bottom:12px;
-            font-weight:500;
-        }
-        .status.active{color:#c53030;font-weight:700;animation:blink 1s infinite}
-        @keyframes blink{
-            0%,100%{opacity:1}
-            50%{opacity:0.5}
-        }
-        .status.success{color:#38a169;font-weight:700}
-        .status.error{color:#c53030;font-weight:700}
-        .status.processing{color:#667eea;font-weight:700}
-        
-        .result-box{
-            margin-top:20px;
-            display:none;
-        }
-        .result-box.show{
-            display:block;
-            animation:fadeInUp 0.5s ease;
-        }
-        @keyframes fadeInUp{
-            from{opacity:0;transform:translateY(20px)}
-            to{opacity:1;transform:translateY(0)}
-        }
-        .result-box audio{
-            width:100%;
-            margin-bottom:20px;
-            border-radius:10px;
-            animation:slideInRight 0.5s ease;
-        }
-        @keyframes slideInRight{
-            from{opacity:0;transform:translateX(30px)}
-            to{opacity:1;transform:translateX(0)}
+        .question-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
         }
         
-        .trans-label{
-            font-size:1rem;
-            color:#667eea;
-            font-weight:700;
-            margin-bottom:12px;
-            display:flex;
-            align-items:center;
-            gap:8px;
-        }
-        .trans-box{
-            background:#fff;
-            border:3px solid #667eea;
-            border-radius:15px;
-            padding:20px;
-            min-height:90px;
-            color:#2d3748;
-            line-height:1.8;
-            font-size:1.05rem;
-            white-space:pre-wrap;
-            box-shadow:0 5px 15px rgba(102,126,234,0.2);
-            transition:all 0.3s ease;
-            margin-bottom:20px;
-        }
-        .trans-box:hover{
-            box-shadow:0 8px 25px rgba(102,126,234,0.3);
-            transform:translateY(-2px);
-        }
-        .trans-box.processing{
-            background:linear-gradient(135deg,#f0f4ff,#e6f0ff);
-            border-style:dashed;
-            animation:loading-pulse 1.5s infinite;
-        }
-        @keyframes loading-pulse{
-            0%,100%{opacity:0.6}
-            50%{opacity:1}
+        .question-number {
+            background: #667eea;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
         }
         
-        .validation-box{
-            margin-top:20px;
-            padding:20px;
-            border-radius:15px;
-            display:none;
-            animation:fadeInUp 0.5s ease;
-        }
-        .validation-box.show{
-            display:block;
-        }
-        .validation-box.correct{
-            background:linear-gradient(135deg,#f0fff4,#c6f6d5);
-            border:3px solid #48bb78;
-            box-shadow:0 5px 20px rgba(72,187,120,0.3);
-        }
-        .validation-box.incorrect{
-            background:linear-gradient(135deg,#fff5f5,#fed7d7);
-            border:3px solid #f56565;
-            box-shadow:0 5px 20px rgba(245,101,101,0.3);
-        }
-        .validation-icon{
-            font-size:3rem;
-            margin-bottom:12px;
-            animation:pop 0.5s ease;
-        }
-        @keyframes pop{
-            0%{transform:scale(0)}
-            50%{transform:scale(1.2)}
-            100%{transform:scale(1)}
-        }
-        .validation-text{
-            font-weight:700;
-            font-size:1.2rem;
-            margin-bottom:10px;
-        }
-        .validation-box.correct .validation-text{
-            color:#22543d;
-        }
-        .validation-box.incorrect .validation-text{
-            color:#742a2a;
-        }
-        .validation-hint{
-            font-size:1rem;
-            color:#4a5568;
-            margin-top:12px;
-            line-height:1.7;
+        .question.completed .question-number {
+            background: #4caf50;
         }
         
-        .next-btn,.retry-btn{
-            display:inline-block;
-            margin-top:18px;
-            padding:14px 35px;
-            border:none;
-            border-radius:50px;
-            font-weight:700;
-            font-size:1.05rem;
-            cursor:pointer;
-            transition:all 0.3s cubic-bezier(0.68,-0.55,0.265,1.55);
-            box-shadow:0 5px 15px rgba(0,0,0,0.2);
-        }
-        .next-btn{
-            background:linear-gradient(135deg,#667eea,#764ba2);
-            color:#fff;
-        }
-        .next-btn:hover{
-            transform:translateY(-3px) scale(1.05);
-            box-shadow:0 8px 25px rgba(102,126,234,0.5);
-        }
-        .retry-btn{
-            background:linear-gradient(135deg,#f56565,#c53030);
-            color:#fff;
-        }
-        .retry-btn:hover{
-            transform:translateY(-3px) scale(1.05);
-            box-shadow:0 8px 25px rgba(245,101,101,0.5);
+        .question-text {
+            flex: 1;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #333;
         }
         
-        .complete-box{
-            margin-top:30px;
-            padding:35px;
-            background:linear-gradient(135deg,#f0fff4,#c6f6d5);
-            border:3px solid #48bb78;
-            border-radius:20px;
-            text-align:center;
-            display:none;
-            box-shadow:0 10px 40px rgba(72,187,120,0.3);
-        }
-        .complete-box.show{
-            display:block;
-            animation:zoomIn 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
-        }
-        .check-label{
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            gap:15px;
-            cursor:pointer;
-            transition:transform 0.2s ease;
-        }
-        .check-label:hover{
-            transform:scale(1.05);
-        }
-        .check-label input{
-            width:26px;
-            height:26px;
-            cursor:pointer;
-            accent-color:#48bb78;
-        }
-        .check-label span{
-            color:#22543d;
-            font-weight:600;
-            font-size:1.15rem;
-        }
-        .badge-done{
-            margin-top:20px;
-            padding:20px 40px;
-            background:linear-gradient(135deg,#48bb78,#38a169);
-            color:#fff;
-            border-radius:15px;
-            font-size:1.3rem;
-            font-weight:800;
-            display:none;
-            box-shadow:0 8px 25px rgba(72,187,120,0.5);
-        }
-        .badge-done.show{
-            display:inline-block;
-            animation:celebrate 0.8s ease;
-        }
-        @keyframes celebrate{
-            0%,100%{transform:scale(1) rotate(0deg)}
-            25%{transform:scale(1.1) rotate(-5deg)}
-            75%{transform:scale(1.1) rotate(5deg)}
+        .record-btn {
+            background: linear-gradient(135deg, #4caf50, #45a049);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
         
-        .spinner{
-            display:inline-block;
-            width:18px;
-            height:18px;
-            border:3px solid #fff;
-            border-top-color:transparent;
-            border-radius:50%;
-            animation:spin 0.8s linear infinite;
-        }
-        @keyframes spin{to{transform:rotate(360deg)}}
-        
-        .footer{
-            text-align:center;
-            padding:25px;
-            color:rgba(255,255,255,.8);
-            font-size:0.95rem;
-            animation:fadeIn 0.8s ease 1.5s backwards;
+        .record-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
         }
         
-        @keyframes fadeIn{
-            from{opacity:0}
-            to{opacity:1}
-        }
-        @keyframes fadeInDown{
-            from{opacity:0;transform:translateY(-30px)}
-            to{opacity:1;transform:translateY(0)}
+        .record-btn.recording {
+            background: linear-gradient(135deg, #f44336, #d32f2f);
+            animation: pulse 1s infinite;
         }
         
-        @media(max-width:600px){
-            .section{padding:25px}
-            .header h1{font-size:1.8rem}
-            .video-box iframe{height:550px}
-            .rec-btn{padding:14px 30px;font-size:1rem}
-            .question-num{width:35px;height:35px;font-size:1rem}
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .status {
+            margin: 15px 0;
+            font-size: 1rem;
+            color: #666;
+            font-weight: 500;
+        }
+        
+        .result-area {
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .result-area.show {
+            display: block;
+        }
+        
+        .audio-player {
+            width: 100%;
+            margin: 15px 0;
+        }
+        
+        .transcription-label {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #667eea;
+            margin: 20px 0 10px 0;
+        }
+        
+        .transcription-box {
+            background: #fff;
+            border: 3px solid #667eea;
+            border-radius: 15px;
+            padding: 20px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #333;
+            font-weight: 600;
+            min-height: 80px;
+        }
+        
+        .validation-result {
+            margin-top: 20px;
+            padding: 25px;
+            border-radius: 15px;
+            display: none;
+        }
+        
+        .validation-result.show {
+            display: block;
+        }
+        
+        .validation-result.correct {
+            background: #d4edda;
+            border: 3px solid #4caf50;
+        }
+        
+        .validation-result.incorrect {
+            background: #f8d7da;
+            border: 3px solid #f44336;
+        }
+        
+        .validation-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        
+        .validation-message {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .validation-result.correct .validation-message {
+            color: #155724;
+        }
+        
+        .validation-result.incorrect .validation-message {
+            color: #721c24;
+        }
+        
+        .hint {
+            margin-top: 15px;
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #666;
+        }
+        
+        .continue-btn, .retry-btn {
+            margin-top: 20px;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .continue-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .continue-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .retry-btn {
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+            color: white;
+        }
+        
+        .retry-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 152, 0, 0.4);
+        }
+        
+        .completion-box {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            border: 3px solid #4caf50;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 30px;
+            display: none;
+        }
+        
+        .completion-box.show {
+            display: block;
+        }
+        
+        .completion-box h2 {
+            color: #155724;
+            font-size: 2rem;
+            margin-bottom: 15px;
         }
     </style>
 </head>
 <body>
-<!-- Partículas de fondo -->
-<div class="particles" id="particles"></div>
-
-<div class="container">
-    <header class="header">
+    <div class="container">
         <h1>✈️ At the Airport Conversation</h1>
-        <p>Interactive Speaking Activity</p>
-        <span class="badge">🎤 Speaking • Level B1 • AI-Powered</span>
-    </header>
-
-    <!-- Barra de progreso -->
-    <div class="progress-container">
-        <div class="progress-header">
-            <span class="progress-title">📊 Your Progress</span>
-            <span class="progress-count" id="progressCount">0/5</span>
-        </div>
-        <div class="progress-bar-bg">
-            <div class="progress-bar" id="progressBar" style="width:0%"></div>
-        </div>
-    </div>
-
-    <div class="card">
-        <div class="section">
-            <div class="section-header">
-                <span class="num">1</span>
-                <h2 class="section-title">Watch the Video</h2>
-            </div>
-            <div class="video-wrap">
-                <div class="video-box">
-                    <iframe src="https://www.youtube.com/embed/V8CvxE9fBXs" title="At the Airport Conversation Video" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture;web-share" allowfullscreen></iframe>
-                </div>
-            </div>
-            <p class="tip">💡 Watch the video at least 2 times before recording</p>
-        </div>
-
-        <div class="section">
-            <div class="section-header">
-                <span class="num">2</span>
-                <h2 class="section-title">Answer Each Question Correctly</h2>
-            </div>
-            <p class="guide-intro">📢 Record your answer for each question based on the video. You must answer correctly to continue!</p>
-            
-            <!-- Pregunta 1 -->
-            <div class="question-item active" data-question="1">
-                <div class="question-header">
-                    <span class="question-num">1</span>
-                    <span class="question-text">Why is the girl worried?</span>
-                    <span class="status-icon">⏺️</span>
-                </div>
-                <div class="rec-area">
-                    <button class="rec-btn" data-btn="1">
-                        🎙️ <span class="rec-text">Start Recording</span>
-                    </button>
-                    <p class="status" data-status="1">Click to record your answer</p>
-                    
-                    <div class="result-box" data-result="1">
-                        <audio controls data-audio="1"></audio>
-                        <p class="trans-label">📝 What you said:</p>
-                        <div class="trans-box" data-trans="1">Your transcription will appear here...</div>
-                        
-                        <div class="validation-box" data-validation="1">
-                            <div class="validation-icon"></div>
-                            <div class="validation-text"></div>
-                            <div class="validation-hint"></div>
-                            <button class="next-btn" data-next="1" style="display:none;">Continue to Question 2 →</button>
-                            <button class="retry-btn" data-retry="1" style="display:none;">Try Again 🔄</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pregunta 2 -->
-            <div class="question-item locked" data-question="2">
-                <div class="question-header">
-                    <span class="question-num">2</span>
-                    <span class="question-text">Where did she lose the passport?</span>
-                    <span class="status-icon">🔒</span>
-                </div>
-                <div class="rec-area">
-                    <button class="rec-btn" data-btn="2">
-                        🎙️ <span class="rec-text">Start Recording</span>
-                    </button>
-                    <p class="status" data-status="2">Click to record your answer</p>
-                    
-                    <div class="result-box" data-result="2">
-                        <audio controls data-audio="2"></audio>
-                        <p class="trans-label">📝 What you said:</p>
-                        <div class="trans-box" data-trans="2">Your transcription will appear here...</div>
-                        
-                        <div class="validation-box" data-validation="2">
-                            <div class="validation-icon"></div>
-                            <div class="validation-text"></div>
-                            <div class="validation-hint"></div>
-                            <button class="next-btn" data-next="2" style="display:none;">Continue to Question 3 →</button>
-                            <button class="retry-btn" data-retry="2" style="display:none;">Try Again 🔄</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pregunta 3 -->
-            <div class="question-item locked" data-question="3">
-                <div class="question-header">
-                    <span class="question-num">3</span>
-                    <span class="question-text">What does the boy suggest to her?</span>
-                    <span class="status-icon">🔒</span>
-                </div>
-                <div class="rec-area">
-                    <button class="rec-btn" data-btn="3">
-                        🎙️ <span class="rec-text">Start Recording</span>
-                    </button>
-                    <p class="status" data-status="3">Click to record your answer</p>
-                    
-                    <div class="result-box" data-result="3">
-                        <audio controls data-audio="3"></audio>
-                        <p class="trans-label">📝 What you said:</p>
-                        <div class="trans-box" data-trans="3">Your transcription will appear here...</div>
-                        
-                        <div class="validation-box" data-validation="3">
-                            <div class="validation-icon"></div>
-                            <div class="validation-text"></div>
-                            <div class="validation-hint"></div>
-                            <button class="next-btn" data-next="3" style="display:none;">Continue to Question 4 →</button>
-                            <button class="retry-btn" data-retry="3" style="display:none;">Try Again 🔄</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pregunta 4 -->
-            <div class="question-item locked" data-question="4">
-                <div class="question-header">
-                    <span class="question-num">4</span>
-                    <span class="question-text">Where are they at that moment?</span>
-                    <span class="status-icon">🔒</span>
-                </div>
-                <div class="rec-area">
-                    <button class="rec-btn" data-btn="4">
-                        🎙️ <span class="rec-text">Start Recording</span>
-                    </button>
-                    <p class="status" data-status="4">Click to record your answer</p>
-                    
-                    <div class="result-box" data-result="4">
-                        <audio controls data-audio="4"></audio>
-                        <p class="trans-label">📝 What you said:</p>
-                        <div class="trans-box" data-trans="4">Your transcription will appear here...</div>
-                        
-                        <div class="validation-box" data-validation="4">
-                            <div class="validation-icon"></div>
-                            <div class="validation-text"></div>
-                            <div class="validation-hint"></div>
-                            <button class="next-btn" data-next="4" style="display:none;">Continue to Question 5 →</button>
-                            <button class="retry-btn" data-retry="4" style="display:none;">Try Again 🔄</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pregunta 5 -->
-            <div class="question-item locked" data-question="5">
-                <div class="question-header">
-                    <span class="question-num">5</span>
-                    <span class="question-text">Have you had a similar experience? Tell us about it.</span>
-                    <span class="status-icon">🔒</span>
-                </div>
-                <div class="rec-area">
-                    <button class="rec-btn" data-btn="5">
-                        🎙️ <span class="rec-text">Start Recording</span>
-                    </button>
-                    <p class="status" data-status="5">Click to record your answer</p>
-                    
-                    <div class="result-box" data-result="5">
-                        <audio controls data-audio="5"></audio>
-                        <p class="trans-label">📝 What you said:</p>
-                        <div class="trans-box" data-trans="5">Your transcription will appear here...</div>
-                        
-                        <div class="validation-box" data-validation="5">
-                            <div class="validation-icon"></div>
-                            <div class="validation-text"></div>
-                            <div class="validation-hint"></div>
-                            <button class="next-btn" data-next="5" style="display:none;">Finish Activity ✓</button>
-                            <button class="retry-btn" data-retry="5" style="display:none;">Try Again 🔄</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Caja de completado -->
-            <div class="complete-box" id="completeBox">
-                <label class="check-label">
-                    <input type="checkbox" id="checkDone">
-                    <span>I completed all 5 questions correctly ✓</span>
-                </label>
-                <div class="badge-done" id="badgeDone">🎉 Perfect! Activity Completed Successfully!</div>
-            </div>
-        </div>
-    </div>
-
-    <footer class="footer">English B1 • Speaking Practice • Powered by AI Transcription & Validation</footer>
-</div>
-
-<script>
-(function(){
-    const API_URL = 'https://speaking-api-81bp.vercel.app/api/transcribe';
-    
-    // Crear partículas de fondo
-    function createParticles() {
-        const container = document.getElementById('particles');
-        for(let i = 0; i < 30; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.width = Math.random() * 5 + 2 + 'px';
-            particle.style.height = particle.style.width;
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.top = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 15 + 's';
-            particle.style.animationDuration = Math.random() * 10 + 10 + 's';
-            container.appendChild(particle);
-        }
-    }
-    createParticles();
-    
-    // Respuestas esperadas SEGÚN EL VIDEO
-    const expectedAnswers = {
-        1: {
-            keywords: ['lost', 'passport', 'cant', 'find', 'missing', 'lose'],
-            hint: '💡 According to the video: The girl is worried because she can\'t find her passport. She lost it somewhere.'
-        },
-        2: {
-            keywords: ['taxi', 'cab', 'car'],
-            hint: '💡 According to the video: She thinks she left her passport in the taxi on the way to the airport.'
-        },
-        3: {
-            keywords: ['information', 'desk', 'counter', 'go', 'ask'],
-            hint: '💡 According to the video: The boy suggests going to the information desk to ask for help finding the passport.'
-        },
-        4: {
-            keywords: ['airport'],
-            hint: '💡 According to the video: They are at the airport. Look at the video title!'
-        },
-        5: {
-            keywords: [], // Pregunta abierta
-            hint: '💡 This is a personal question. Share your own experience about losing something important while traveling. Speak for at least 15-20 seconds.',
-            minWords: 15
-        }
-    };
-
-    let completedQuestions = 0;
-    let isRecording = false;
-    let mediaRecorders = {};
-    let audioChunks = {};
-    let stream = null;
-
-    function updateProgress() {
-        const progressBar = document.getElementById('progressBar');
-        const progressCount = document.getElementById('progressCount');
-        const percentage = (completedQuestions / 5) * 100;
-        progressBar.style.width = percentage + '%';
-        progressCount.textContent = completedQuestions + '/5';
-    }
-
-    for (let i = 1; i <= 5; i++) {
-        const btn = document.querySelector(`[data-btn="${i}"]`);
-        const nextBtn = document.querySelector(`[data-next="${i}"]`);
-        const retryBtn = document.querySelector(`[data-retry="${i}"]`);
+        <p class="subtitle">Speaking Practice - Level B1</p>
         
-        btn.onclick = () => handleRecording(i);
-        if (nextBtn) {
-            nextBtn.onclick = () => goToNextQuestion(i);
-        }
-        if (retryBtn) {
-            retryBtn.onclick = () => resetQuestion(i);
-        }
-    }
-
-    async function handleRecording(questionNum) {
-        const btn = document.querySelector(`[data-btn="${questionNum}"]`);
-        const recText = btn.querySelector('.rec-text');
-        const status = document.querySelector(`[data-status="${questionNum}"]`);
-        const resultBox = document.querySelector(`[data-result="${questionNum}"]`);
-        const audioPlayer = document.querySelector(`[data-audio="${questionNum}"]`);
-
-        if (!isRecording) {
-            try {
-                if (!stream) {
-                    stream = await navigator.mediaDevices.getUserMedia({audio: true});
-                }
-
-                audioChunks[questionNum] = [];
+        <div class="progress">
+            <div class="progress-bar" id="progressBar" style="width: 0%;">
+                <span id="progressText">0/5 Complete</span>
+            </div>
+        </div>
+        
+        <h2 style="margin: 30px 0 15px 0; color: #333;">📺 Step 1: Watch the Video</h2>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/V8CvxE9fBXs" allowfullscreen></iframe>
+        </div>
+        
+        <h2 style="margin: 30px 0 15px 0; color: #333;">🎤 Step 2: Answer the Questions</h2>
+        <p style="color: #666; margin-bottom: 20px;">Record your answer for each question. You must answer correctly to continue!</p>
+        
+        <!-- Question 1 -->
+        <div class="question active" data-q="1">
+            <div class="question-header">
+                <div class="question-number">1</div>
+                <div class="question-text">Why is the girl worried?</div>
+            </div>
+            <button class="record-btn" onclick="toggleRecording(1)">
+                <span id="icon-1">🎙️</span>
+                <span id="btnText-1">Start Recording</span>
+            </button>
+            <div class="status" id="status-1">Click to start recording</div>
+            
+            <div class="result-area" id="result-1">
+                <audio class="audio-player" id="audio-1" controls></audio>
+                <div class="transcription-label">📝 What you said:</div>
+                <div class="transcription-box" id="trans-1">Processing...</div>
                 
-                let mimeType = '';
-                if (MediaRecorder.isTypeSupported('audio/mp4')) {
-                    mimeType = 'audio/mp4';
-                } else if (MediaRecorder.isTypeSupported('audio/webm;codecs=opus')) {
-                    mimeType = 'audio/webm;codecs=opus';
-                } else if (MediaRecorder.isTypeSupported('audio/webm')) {
-                    mimeType = 'audio/webm';
-                }
-
-                const mediaRecorder = mimeType ? 
-                    new MediaRecorder(stream, { mimeType }) : 
-                    new MediaRecorder(stream);
+                <div class="validation-result" id="validation-1">
+                    <div class="validation-icon" id="icon-val-1"></div>
+                    <div class="validation-message" id="msg-1"></div>
+                    <div class="hint" id="hint-1"></div>
+                    <button class="continue-btn" id="continue-1" onclick="goNext(1)" style="display:none;">Continue to Question 2 →</button>
+                    <button class="retry-btn" id="retry-1" onclick="resetQuestion(1)" style="display:none;">Try Again 🔄</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Question 2 -->
+        <div class="question locked" data-q="2">
+            <div class="question-header">
+                <div class="question-number">2</div>
+                <div class="question-text">Where did she lose the passport?</div>
+            </div>
+            <button class="record-btn" onclick="toggleRecording(2)">
+                <span id="icon-2">🎙️</span>
+                <span id="btnText-2">Start Recording</span>
+            </button>
+            <div class="status" id="status-2">Click to start recording</div>
+            
+            <div class="result-area" id="result-2">
+                <audio class="audio-player" id="audio-2" controls></audio>
+                <div class="transcription-label">📝 What you said:</div>
+                <div class="transcription-box" id="trans-2">Processing...</div>
                 
-                mediaRecorders[questionNum] = mediaRecorder;
+                <div class="validation-result" id="validation-2">
+                    <div class="validation-icon" id="icon-val-2"></div>
+                    <div class="validation-message" id="msg-2"></div>
+                    <div class="hint" id="hint-2"></div>
+                    <button class="continue-btn" id="continue-2" onclick="goNext(2)" style="display:none;">Continue to Question 3 →</button>
+                    <button class="retry-btn" id="retry-2" onclick="resetQuestion(2)" style="display:none;">Try Again 🔄</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Question 3 -->
+        <div class="question locked" data-q="3">
+            <div class="question-header">
+                <div class="question-number">3</div>
+                <div class="question-text">What does the boy suggest to her?</div>
+            </div>
+            <button class="record-btn" onclick="toggleRecording(3)">
+                <span id="icon-3">🎙️</span>
+                <span id="btnText-3">Start Recording</span>
+            </button>
+            <div class="status" id="status-3">Click to start recording</div>
+            
+            <div class="result-area" id="result-3">
+                <audio class="audio-player" id="audio-3" controls></audio>
+                <div class="transcription-label">📝 What you said:</div>
+                <div class="transcription-box" id="trans-3">Processing...</div>
+                
+                <div class="validation-result" id="validation-3">
+                    <div class="validation-icon" id="icon-val-3"></div>
+                    <div class="validation-message" id="msg-3"></div>
+                    <div class="hint" id="hint-3"></div>
+                    <button class="continue-btn" id="continue-3" onclick="goNext(3)" style="display:none;">Continue to Question 4 →</button>
+                    <button class="retry-btn" id="retry-3" onclick="resetQuestion(3)" style="display:none;">Try Again 🔄</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Question 4 -->
+        <div class="question locked" data-q="4">
+            <div class="question-header">
+                <div class="question-number">4</div>
+                <div class="question-text">Where are they at that moment?</div>
+            </div>
+            <button class="record-btn" onclick="toggleRecording(4)">
+                <span id="icon-4">🎙️</span>
+                <span id="btnText-4">Start Recording</span>
+            </button>
+            <div class="status" id="status-4">Click to start recording</div>
+            
+            <div class="result-area" id="result-4">
+                <audio class="audio-player" id="audio-4" controls></audio>
+                <div class="transcription-label">📝 What you said:</div>
+                <div class="transcription-box" id="trans-4">Processing...</div>
+                
+                <div class="validation-result" id="validation-4">
+                    <div class="validation-icon" id="icon-val-4"></div>
+                    <div class="validation-message" id="msg-4"></div>
+                    <div class="hint" id="hint-4"></div>
+                    <button class="continue-btn" id="continue-4" onclick="goNext(4)" style="display:none;">Continue to Question 5 →</button>
+                    <button class="retry-btn" id="retry-4" onclick="resetQuestion(4)" style="display:none;">Try Again 🔄</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Question 5 -->
+        <div class="question locked" data-q="5">
+            <div class="question-header">
+                <div class="question-number">5</div>
+                <div class="question-text">Have you had a similar experience? Tell us about it.</div>
+            </div>
+            <button class="record-btn" onclick="toggleRecording(5)">
+                <span id="icon-5">🎙️</span>
+                <span id="btnText-5">Start Recording</span>
+            </button>
+            <div class="status" id="status-5">Click to start recording</div>
+            
+            <div class="result-area" id="result-5">
+                <audio class="audio-player" id="audio-5" controls></audio>
+                <div class="transcription-label">📝 What you said:</div>
+                <div class="transcription-box" id="trans-5">Processing...</div>
+                
+                <div class="validation-result" id="validation-5">
+                    <div class="validation-icon" id="icon-val-5"></div>
+                    <div class="validation-message" id="msg-5"></div>
+                    <div class="hint" id="hint-5"></div>
+                    <button class="continue-btn" id="continue-5" onclick="showCompletion()" style="display:none;">Finish Exercise ✓</button>
+                    <button class="retry-btn" id="retry-5" onclick="resetQuestion(5)" style="display:none;">Try Again 🔄</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="completion-box" id="completionBox">
+            <h2>🎉 Congratulations!</h2>
+            <p style="font-size: 1.2rem; color: #155724;">You've successfully completed all 5 questions!</p>
+        </div>
+    </div>
 
-                mediaRecorder.ondataavailable = function(e) {
-                    if (e.data.size > 0) audioChunks[questionNum].push(e.data);
-                };
-
-                mediaRecorder.onstop = async function() {
-                    const blob = new Blob(audioChunks[questionNum], {type: mimeType || 'audio/webm'});
-                    const url = URL.createObjectURL(blob);
-                    audioPlayer.src = url;
-                    resultBox.classList.add('show');
+    <script>
+        const API_URL = 'https://speaking-api-81bp.vercel.app/api/transcribe';
+        
+        const expectedAnswers = {
+            1: {
+                keywords: ['lost', 'passport', 'cant', 'find', 'missing', 'lose'],
+                hint: '💡 Hint: According to the video, the girl is worried because she can\'t find her passport. She lost it.'
+            },
+            2: {
+                keywords: ['taxi', 'cab', 'car'],
+                hint: '💡 Hint: According to the video, she thinks she left her passport in the taxi.'
+            },
+            3: {
+                keywords: ['information', 'desk', 'counter', 'go', 'ask'],
+                hint: '💡 Hint: According to the video, the boy suggests going to the information desk to ask for help.'
+            },
+            4: {
+                keywords: ['airport'],
+                hint: '💡 Hint: According to the video, they are at the airport.'
+            },
+            5: {
+                keywords: [],
+                minWords: 15,
+                hint: '💡 This is a personal question. Share your own experience about losing something important. Speak for at least 15-20 seconds.'
+            }
+        };
+        
+        let isRecording = {};
+        let mediaRecorders = {};
+        let audioChunks = {};
+        let stream = null;
+        let completedCount = 0;
+        
+        async function toggleRecording(q) {
+            if (!isRecording[q]) {
+                // START RECORDING
+                try {
+                    if (!stream) {
+                        stream = await navigator.mediaDevices.getUserMedia({audio: true});
+                    }
                     
-                    await transcribeAudio(blob, questionNum);
-                };
-
-                mediaRecorder.start(200);
-                isRecording = true;
-
-                btn.classList.add('recording');
-                recText.textContent = 'Stop Recording';
-                status.textContent = '🔴 Recording... Speak clearly!';
-                status.className = 'status active';
-
-            } catch(err) {
-                console.error('Microphone error:', err);
-                if (err.name === 'NotAllowedError') {
-                    status.textContent = '❌ Please allow microphone access';
-                } else if (err.name === 'NotFoundError') {
-                    status.textContent = '❌ No microphone found';
-                } else {
-                    status.textContent = '❌ Could not start recording';
+                    audioChunks[q] = [];
+                    
+                    let mimeType = MediaRecorder.isTypeSupported('audio/mp4') ? 'audio/mp4' : 
+                                   MediaRecorder.isTypeSupported('audio/webm;codecs=opus') ? 'audio/webm;codecs=opus' : 'audio/webm';
+                    
+                    const recorder = new MediaRecorder(stream, { mimeType });
+                    mediaRecorders[q] = recorder;
+                    
+                    recorder.ondataavailable = e => {
+                        if (e.data.size > 0) audioChunks[q].push(e.data);
+                    };
+                    
+                    recorder.onstop = async () => {
+                        const blob = new Blob(audioChunks[q], {type: mimeType});
+                        const url = URL.createObjectURL(blob);
+                        document.getElementById('audio-' + q).src = url;
+                        document.getElementById('result-' + q).classList.add('show');
+                        await transcribeAudio(blob, q);
+                    };
+                    
+                    recorder.start(200);
+                    isRecording[q] = true;
+                    
+                    document.getElementById('btnText-' + q).textContent = 'Stop Recording';
+                    document.querySelector('[onclick="toggleRecording(' + q + ')"]').classList.add('recording');
+                    document.getElementById('status-' + q).textContent = '🔴 Recording... Speak clearly!';
+                    
+                } catch(err) {
+                    document.getElementById('status-' + q).textContent = '❌ Microphone error: ' + err.message;
                 }
+            } else {
+                // STOP RECORDING
+                isRecording[q] = false;
+                if (mediaRecorders[q]) {
+                    mediaRecorders[q].stop();
+                }
+                document.getElementById('btnText-' + q).textContent = 'Processing...';
+                document.querySelector('[onclick="toggleRecording(' + q + ')"]').classList.remove('recording');
+                document.getElementById('status-' + q).textContent = '⏳ Transcribing your audio...';
             }
-        } else {
-            isRecording = false;
-            const mediaRecorder = mediaRecorders[questionNum];
-            if (mediaRecorder && mediaRecorder.state !== 'inactive') {
-                mediaRecorder.stop();
-            }
-
-            btn.classList.remove('recording');
-            btn.disabled = true;
-            recText.innerHTML = '<span class="spinner"></span> Processing...';
-            status.textContent = '⏳ Transcribing your audio...';
-            status.className = 'status processing';
         }
-    }
-
-    async function transcribeAudio(blob, questionNum) {
-        const transBox = document.querySelector(`[data-trans="${questionNum}"]`);
-        const status = document.querySelector(`[data-status="${questionNum}"]`);
-        const btn = document.querySelector(`[data-btn="${questionNum}"]`);
-        const recText = btn.querySelector('.rec-text');
-
-        transBox.classList.add('processing');
-        transBox.textContent = 'Sending audio to transcription service...';
-
-        try {
-            const response = await fetch(API_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/octet-stream'
-                },
-                body: blob
-            });
-
-            if (!response.ok) {
-                throw new Error(`Server error: ${response.status}`);
+        
+        async function transcribeAudio(blob, q) {
+            const transBox = document.getElementById('trans-' + q);
+            transBox.textContent = 'Transcribing...';
+            
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/octet-stream'},
+                    body: blob
+                });
+                
+                const data = await response.json();
+                
+                if (data.success && data.text) {
+                    // ✅ MOSTRAR LA TRANSCRIPCIÓN SIEMPRE
+                    transBox.textContent = data.text;
+                    document.getElementById('status-' + q).textContent = '✅ Transcription complete!';
+                    
+                    // Validar
+                    validateAnswer(q, data.text);
+                } else {
+                    throw new Error('Transcription failed');
+                }
+            } catch(err) {
+                transBox.textContent = '⚠️ Error: Could not transcribe. Try again.';
+                document.getElementById('status-' + q).textContent = '❌ Transcription failed';
+            } finally {
+                document.getElementById('btnText-' + q).textContent = 'Record Again';
             }
-
-            const data = await response.json();
-            transBox.classList.remove('processing');
-
-            if (data.success && data.text) {
-                // ✅ SIEMPRE MOSTRAR LA TRANSCRIPCIÓN
-                transBox.textContent = data.text;
-                transBox.style.fontWeight = '600';
-                transBox.style.fontSize = '1.1rem';
+        }
+        
+        function validateAnswer(q, text) {
+            const expected = expectedAnswers[q];
+            const textLower = text.toLowerCase();
+            let isCorrect = false;
+            
+            if (q === 5) {
+                const wordCount = text.trim().split(/\s+/).length;
+                isCorrect = wordCount >= 15;
+            } else {
+                const found = expected.keywords.filter(kw => textLower.includes(kw.toLowerCase()));
+                isCorrect = found.length >= 1;
+            }
+            
+            const validation = document.getElementById('validation-' + q);
+            validation.classList.add('show');
+            
+            if (isCorrect) {
+                // ✅ CORRECTO
+                validation.classList.remove('incorrect');
+                validation.classList.add('correct');
+                document.getElementById('icon-val-' + q).textContent = '✅';
+                document.getElementById('msg-' + q).textContent = 'Correct! Well done!';
+                document.getElementById('hint-' + q).textContent = 'Your answer matches the video content. You can continue!';
+                document.getElementById('continue-' + q).style.display = 'inline-block';
+                document.getElementById('retry-' + q).style.display = 'none';
                 
-                status.textContent = '✅ Transcription complete!';
-                status.className = 'status success';
+                document.querySelector('[data-q="' + q + '"]').classList.add('completed');
+                document.querySelector('[data-q="' + q + '"]').classList.remove('active');
                 
-                // Validar la respuesta
-                validateAnswer(questionNum, data.text);
+                completedCount++;
+                updateProgress();
+                
+                // Scroll al botón Continue
+                setTimeout(() => {
+                    document.getElementById('continue-' + q).scrollIntoView({behavior: 'smooth', block: 'center'});
+                }, 300);
                 
             } else {
-                throw new Error(data.error || 'Transcription failed');
+                // ❌ INCORRECTO
+                validation.classList.remove('correct');
+                validation.classList.add('incorrect');
+                document.getElementById('icon-val-' + q).textContent = '❌';
+                document.getElementById('msg-' + q).textContent = 'Incorrect answer';
+                document.getElementById('hint-' + q).innerHTML = expected.hint + '<br><br>Please watch the video again and record your answer.';
+                document.getElementById('continue-' + q).style.display = 'none';
+                document.getElementById('retry-' + q).style.display = 'inline-block';
             }
-
-        } catch(err) {
-            console.error('Transcription error:', err);
-            transBox.classList.remove('processing');
-            transBox.textContent = '⚠️ Could not transcribe audio. Please try again.';
-            status.textContent = '❌ Transcription failed';
-            status.className = 'status';
-        } finally {
-            btn.disabled = false;
-            recText.textContent = 'Record Again';
         }
-    }
-
-    function validateAnswer(questionNum, transcription) {
-        const validationBox = document.querySelector(`[data-validation="${questionNum}"]`);
-        const validationIcon = validationBox.querySelector('.validation-icon');
-        const validationText = validationBox.querySelector('.validation-text');
-        const validationHint = validationBox.querySelector('.validation-hint');
-        const nextBtn = validationBox.querySelector('.next-btn');
-        const retryBtn = validationBox.querySelector('.retry-btn');
-        const questionItem = document.querySelector(`[data-question="${questionNum}"]`);
-        const statusIcon = questionItem.querySelector('.status-icon');
-        const status = document.querySelector(`[data-status="${questionNum}"]`);
-
-        const expected = expectedAnswers[questionNum];
-        const textLower = transcription.toLowerCase();
         
-        let isCorrect = false;
-
-        if (questionNum === 5) {
-            // Pregunta 5 es abierta
-            const wordCount = transcription.trim().split(/\s+/).length;
-            isCorrect = wordCount >= (expected.minWords || 15);
-        } else {
-            // Validar con palabras clave del video
-            const foundKeywords = expected.keywords.filter(keyword => 
-                textLower.includes(keyword.toLowerCase())
-            );
-            isCorrect = foundKeywords.length >= 1;
+        function resetQuestion(q) {
+            document.getElementById('validation-' + q).classList.remove('show');
+            document.getElementById('status-' + q).textContent = 'Ready to record again';
+            document.getElementById('btnText-' + q).textContent = 'Start Recording';
         }
-
-        validationBox.classList.add('show');
-
-        if (isCorrect) {
-            // ✅ Respuesta CORRECTA
-            validationBox.classList.remove('incorrect');
-            validationBox.classList.add('correct');
-            validationIcon.textContent = '✅';
-            validationText.textContent = 'Correct! Well done!';
-            validationHint.textContent = 'Your answer matches the video content. You can continue!';
-            nextBtn.style.display = 'inline-block';
-            retryBtn.style.display = 'none';
-            
-            questionItem.classList.remove('incorrect', 'active');
-            questionItem.classList.add('completed');
-            statusIcon.textContent = '✅';
-            status.textContent = '✅ Correct answer!';
-            status.className = 'status success';
-            
-            completedQuestions++;
-            updateProgress();
-
-        } else {
-            // ❌ Respuesta INCORRECTA
-            validationBox.classList.remove('correct');
-            validationBox.classList.add('incorrect');
-            validationIcon.textContent = '❌';
-            validationText.textContent = 'Incorrect answer';
-            validationHint.innerHTML = `${expected.hint}<br><br>Please watch the video again and record your answer.`;
-            nextBtn.style.display = 'none';
-            retryBtn.style.display = 'inline-block';
-            
-            questionItem.classList.remove('completed');
-            questionItem.classList.add('incorrect');
-            statusIcon.textContent = '❌';
-            status.textContent = '❌ Incorrect - Try again';
-            status.className = 'status error';
-        }
-    }
-
-    function resetQuestion(questionNum) {
-        const validationBox = document.querySelector(`[data-validation="${questionNum}"]`);
-        const questionItem = document.querySelector(`[data-question="${questionNum}"]`);
-        const status = document.querySelector(`[data-status="${questionNum}"]`);
-        const btn = document.querySelector(`[data-btn="${questionNum}"]`);
-        const recText = btn.querySelector('.rec-text');
-
-        // Ocultar solo la validación, NO la transcripción
-        validationBox.classList.remove('show', 'correct', 'incorrect');
-        questionItem.classList.remove('incorrect', 'completed');
         
-        status.textContent = 'Ready to record again';
-        status.className = 'status';
-        recText.textContent = 'Start Recording';
-        btn.disabled = false;
-    }
-
-    function goToNextQuestion(currentNum) {
-        const currentItem = document.querySelector(`[data-question="${currentNum}"]`);
-        currentItem.classList.remove('active');
-        
-        if (currentNum < 5) {
-            const nextNum = currentNum + 1;
-            const nextItem = document.querySelector(`[data-question="${nextNum}"]`);
-            nextItem.classList.remove('locked');
-            nextItem.classList.add('active');
+        function goNext(current) {
+            document.querySelector('[data-q="' + current + '"]').classList.remove('active');
             
-            const statusIcon = nextItem.querySelector('.status-icon');
-            statusIcon.textContent = '⏺️';
-            
-            nextItem.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-            // Completado
-            document.getElementById('completeBox').classList.add('show');
-            document.getElementById('completeBox').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            if (current < 5) {
+                const next = current + 1;
+                document.querySelector('[data-q="' + next + '"]').classList.remove('locked');
+                document.querySelector('[data-q="' + next + '"]').classList.add('active');
+                
+                // Scroll a la siguiente pregunta
+                setTimeout(() => {
+                    document.querySelector('[data-q="' + next + '"]').scrollIntoView({behavior: 'smooth', block: 'start'});
+                }, 300);
+            }
         }
-    }
-
-    document.getElementById('checkDone').onchange = function() {
-        document.getElementById('badgeDone').classList.toggle('show', this.checked);
-    };
-})();
-</script>
+        
+        function showCompletion() {
+            document.getElementById('completionBox').classList.add('show');
+            document.getElementById('completionBox').scrollIntoView({behavior: 'smooth', block: 'center'});
+        }
+        
+        function updateProgress() {
+            const percent = (completedCount / 5) * 100;
+            document.getElementById('progressBar').style.width = percent + '%';
+            document.getElementById('progressText').textContent = completedCount + '/5 Complete';
+        }
+    </script>
 </body>
 </html>
