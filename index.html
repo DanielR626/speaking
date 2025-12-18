@@ -480,8 +480,8 @@
             },
             5: {
                 keywords: [],
-                minWords: 15,
-                hint: '💡 This is a personal question. Share your own experience about losing something important. Speak for at least 15-20 seconds.'
+                minWords: 10,
+                hint: '💡 This is a personal question. Share your own experience about losing something important. Speak for at least 5-10 seconds.'
             }
         };
         
@@ -579,7 +579,7 @@
             
             if (q === 5) {
                 const wordCount = text.trim().split(/\s+/).length;
-                isCorrect = wordCount >= 15;
+                isCorrect = wordCount >= 10;
             } else {
                 const found = expected.keywords.filter(kw => textLower.includes(kw.toLowerCase()));
                 isCorrect = found.length >= 1;
